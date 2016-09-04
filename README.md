@@ -1,6 +1,4 @@
-# RforFun
-
-共立出版『Rで楽しむ統計』のサポートページです。
+# 共立出版『Rで楽しむ統計』サポートページ
 
 http://www.kyoritsu-pub.co.jp/bookdetail/9784320112414
 
