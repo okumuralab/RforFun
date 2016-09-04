@@ -1,0 +1,12 @@
+args = commandArgs()
+basename = sub(".R$", "", sub("^--file=(.*/)?", "", args[grep("^--file=", args)]))
+if (length(basename) != 0)
+    quartz(type="pdf", file=paste0(basename, ".pdf"), width=5, height=2.5)
+par(family="Palatino")
+par(mgp=c(2,0.8,0)) # title and axis margins. default: c(3,1,0)
+par(mar=c(2,3,1,1)+0.1) # bottom, left, top, right margins. default: c(5,4,4,2)+0.1
+curve(dnorm(x), xlim=c(-3,3), ylim=c(0,0.4), xlab="", ylab="", frame.plot=FALSE, yaxs="i")
+curve(dcauchy(x), lwd=2, add=TRUE)
+text(0.3, 0.16, "Cauchy")
+text(1.2, 0.35, "Normal")
+dev.off()

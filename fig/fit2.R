@@ -1,0 +1,10 @@
+args = commandArgs()
+basename = sub(".R$", "", sub("^--file=(.*/)?", "", args[grep("^--file=", args)]))
+if (length(basename) != 0)
+    quartz(type="pdf", file=paste0(basename, ".pdf"), width=4, height=3)
+par(family="Palatino")
+par(mgp=c(1.5,0.5,0)) # title and axis margins. default: c(3,1,0)
+par(mar=c(2,1,1,1)+0.1) # bottom, left, top, right margins. default: c(5,4,4,2)+0.1
+y = c(11,4,13,10,4,8,6,16,7,12,10,13,6,5,1,4,2,0,0,1)
+stripchart(rep(1:20,y), pch=16, method="stack", at=0, offset=0.5)
+dev.off()

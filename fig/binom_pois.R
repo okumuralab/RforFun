@@ -1,0 +1,12 @@
+args = commandArgs()
+basename = sub(".R$", "", sub("^--file=(.*/)?", "", args[grep("^--file=", args)]))
+if (length(basename) != 0)
+    quartz(type="pdf", file=paste0(basename, ".pdf"), width=7, height=4)
+par(family="Palatino")
+par(mgp=c(2,0.8,0)) # title and axis margins. default: c(3,1,0)
+par(mar=c(3,3,2,2)+0.1) # bottom, left, top, right margins. default: c(5,4,4,2)+0.1
+plot(0:15, dbinom(0:15, 500, 0.01), type="o", pch=1, xlab="", ylab="", las=1)
+points(0:15, dpois(0:15, 5), type="o", pch=4)
+par(family="Courier")
+legend(15,0.17, c("dbinom(0:15, 500, 0.01)","dpois(0:15, 5)"), pch=c(1,4), xjust=1, bty="n")
+dev.off()

@@ -1,0 +1,25 @@
+args = commandArgs()
+basename = sub(".R$", "", sub("^--file=(.*/)?", "", args[grep("^--file=", args)]))
+if (length(basename) != 0)
+    quartz(type="pdf", file=paste0(basename, ".pdf"), width=7, height=5)
+# par(family="HiraKakuProN-W3")
+par(family="Palatino")
+par(mgp=c(2,0.8,0)) # title and axis margins. default: c(3,1,0)
+par(mar=c(3,3,1,3)+0.1) # bottom, left, top, right margins. default: c(5,4,4,2)+0.1
+foo = function(r, n) {
+    x = (0:100)/100
+    y = sapply(x, function(t) binom.test(r, n, t)$p.value)
+    plot(x, y, pch=16, xlab=expression(italic(θ)), ylab=expression(italic(p)), yaxt="n")
+    t = c(0,0.05,0.5,1);  axis(2, t, t, las=1)
+    t = 0.025;  axis(4, t, t, las=1)
+    y = sapply(x, function(t) binom.test(r, n, t, alternative="less")$p.value)
+    points(x, y)
+    y = sapply(x, function(t) binom.test(r, n, t, alternative="greater")$p.value)
+    points(x, y)
+    abline(h=0.05)
+    abline(h=0)
+    abline(h=0.025)
+    abline(v=binom.test(r, n)$conf.int)
+}
+foo(4, 10)
+dev.off()
