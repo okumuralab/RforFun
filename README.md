@@ -8,6 +8,7 @@
 
 * 共立出版の[『Rで楽しむ統計』のページ](http://www.kyoritsu-pub.co.jp/bookdetail/9784320112414)
 * 共立出版の[「Wonderful R」シリーズのページ](http://www.kyoritsu-pub.co.jp/series/205/)
+* なぜか電子版は[Kinoppy版](https://www.kinokuniya.co.jp/f/dsg-08-EK-1049130)しか出てない
 
 ## 補足説明
 
